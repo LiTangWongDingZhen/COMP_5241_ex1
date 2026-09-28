@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: oklch(0.985 0.002 247.839);
+  --foreground: oklch(0.208 0.024 265.755);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.208 0.024 265.755);
+  --muted: oklch(0.95 0.003 264.531);
+  --muted-foreground: oklch(0.517 0.02 264.364);
+  --border: oklch(0.911 0.006 264.334);
+  --primary: oklch(0.546 0.245 262.881);
+  --primary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.95 0.02 264.531);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 265.755);
+  --foreground: oklch(0.93 0.01 265.755);
+  --card: oklch(0.21 0.02 265.755);
+  --card-foreground: oklch(0.93 0.01 265.755);
+  --muted: oklch(0.26 0.02 265.755);
+  --muted-foreground: oklch(0.7 0.02 265.755);
+  --border: oklch(0.31 0.02 265.755);
+  --primary: oklch(0.65 0.2 262.881);
+  --primary-foreground: oklch(0.985 0 0);
+  --accent: oklch(0.28 0.03 265.755);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    "Noto Sans SC",
+    "Noto Sans JP",
+    "Noto Sans KR",
+    sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
