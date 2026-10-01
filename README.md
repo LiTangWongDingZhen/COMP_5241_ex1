@@ -153,4 +153,4 @@ The app uses a **vibrant gradient design system** defined in `src/app/globals.cs
 - The translate API returns **plain translated text** (no JSON wrapper) — the model is instructed to respond with only the translation.
 - Vercel Speed Insights is wired up in `src/app/layout.tsx` via `<SpeedInsights />`.
 
-- This app is developed via the use of : qwen 3.8 27b running locally
+- This app is developed via the use of : `qwen 3.8 27b` running locally
