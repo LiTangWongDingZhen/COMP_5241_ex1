@@ -45,7 +45,7 @@ export function NotesList({
         <button
           type="button"
           onClick={onCreate}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-primary px-3.5 py-1.5 text-sm font-semibold text-white btn-glow"
         >
           <Plus className="h-4 w-4" />
           New
@@ -76,9 +76,9 @@ export function NotesList({
             return (
               <div
                 key={note.id}
-                className={`group relative rounded-lg border transition-colors ${
+                className={`group relative rounded-xl border transition-smooth ${
                   active
-                    ? "border-primary/40 bg-accent"
+                    ? "border-primary/50 bg-accent shadow-sm"
                     : "border-transparent hover:bg-muted"
                 }`}
               >
@@ -88,7 +88,7 @@ export function NotesList({
                   className="w-full px-3 py-2.5 pr-10 text-left"
                 >
                   <p
-                    className={`truncate text-sm font-medium ${
+                    className={`truncate text-sm font-semibold ${
                       active ? "text-foreground" : "text-foreground/90"
                     }`}
                   >
@@ -109,7 +109,7 @@ export function NotesList({
                     e.stopPropagation();
                     onDelete(note.id);
                   }}
-                  className="absolute right-2 top-2.5 rounded-md p-1.5 text-muted-foreground opacity-0 transition-opacity hover:bg-background hover:text-red-500 group-hover:opacity-100"
+                  className="absolute right-2 top-2.5 rounded-md p-1.5 text-muted-foreground opacity-0 transition-smooth hover:bg-background hover:text-destructive group-hover:opacity-100"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>

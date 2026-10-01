@@ -66,8 +66,10 @@ export function TranslatePanel({ sourceText }: TranslatePanelProps) {
   return (
     <div className="flex h-full min-h-0 flex-col">
       <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-        <Sparkles className="h-4 w-4 text-primary" />
-        <h2 className="text-sm font-semibold">AI Translate</h2>
+        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-accent text-white shadow-sm">
+          <Sparkles className="h-4 w-4" />
+        </div>
+        <h2 className="text-sm font-bold">AI Translate</h2>
       </div>
 
       <div className="flex-1 space-y-4 overflow-y-auto p-4">
@@ -96,7 +98,7 @@ export function TranslatePanel({ sourceText }: TranslatePanelProps) {
           type="button"
           onClick={handleTranslate}
           disabled={!canTranslate}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-primary px-4 py-2.5 text-sm font-semibold text-white btn-glow disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
         >
           {loading ? (
             <Loader2 className="h-4 w-4 animate-spin" />
@@ -114,7 +116,7 @@ export function TranslatePanel({ sourceText }: TranslatePanelProps) {
         )}
 
         {error && (
-          <div className="rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-600 dark:text-red-400">
+          <div className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm font-medium text-destructive">
             {error}
           </div>
         )}
@@ -129,10 +131,10 @@ export function TranslatePanel({ sourceText }: TranslatePanelProps) {
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs text-muted-foreground transition-smooth hover:bg-muted hover:text-foreground"
                 >
                   {copied ? (
-                    <Check className="h-3.5 w-3.5 text-emerald-500" />
+                    <Check className="h-3.5 w-3.5 text-success" />
                   ) : (
                     <Copy className="h-3.5 w-3.5" />
                   )}
@@ -148,7 +150,7 @@ export function TranslatePanel({ sourceText }: TranslatePanelProps) {
                 </button>
               </div>
             </div>
-            <div className="max-h-80 overflow-y-auto whitespace-pre-wrap rounded-lg border border-border bg-card px-3 py-2.5 text-sm leading-6 text-foreground">
+            <div className="max-h-80 overflow-y-auto whitespace-pre-wrap rounded-xl border border-primary/30 bg-accent/50 px-3.5 py-3 text-sm leading-6 text-foreground shadow-sm">
               {result.translation}
             </div>
           </div>

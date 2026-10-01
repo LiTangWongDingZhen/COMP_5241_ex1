@@ -69,7 +69,7 @@ export function NoteEditor({
         />
         <div className="flex items-center gap-2">
           {savedFlash && (
-            <span className="inline-flex items-center gap-1 text-xs text-emerald-500">
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-success">
               <Check className="h-3.5 w-3.5" /> Saved
             </span>
           )}
@@ -77,7 +77,7 @@ export function NoteEditor({
             type="button"
             onClick={handleSave}
             disabled={saving || !dirty}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-primary px-3.5 py-1.5 text-sm font-semibold text-white btn-glow disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
           >
             {saving ? (
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -90,7 +90,7 @@ export function NoteEditor({
       </div>
 
       {error && (
-        <div className="mx-5 mt-3 rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-600 dark:text-red-400">
+        <div className="mx-5 mt-3 rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm font-medium text-destructive">
           {error}
         </div>
       )}
