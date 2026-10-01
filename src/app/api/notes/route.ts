@@ -50,12 +50,6 @@ export async function POST(request: NextRequest) {
 
   const title = typeof body.title === "string" ? body.title.trim() : "";
   const content = typeof body.content === "string" ? body.content : "";
-  if (!title && !content) {
-    return NextResponse.json(
-      { error: "Note must have a title or content" },
-      { status: 400 }
-    );
-  }
 
   const { data, error } = await supabase
     .from("notes")
