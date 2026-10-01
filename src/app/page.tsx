@@ -6,7 +6,6 @@ import { NotesList } from "@/components/notes-list";
 import { NoteEditor } from "@/components/note-editor";
 import { TranslatePanel } from "@/components/translate-panel";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { isSupabaseConfigured } from "@/lib/supabase";
 import type { Note } from "@/lib/types";
 
 export default function Home() {
@@ -15,9 +14,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notConfigured, setNotConfigured] = useState(false);
   const [showSetup, setShowSetup] = useState(false);
-
-  const configured = isSupabaseConfigured();
 
   const selectedNote = useMemo(
     () => notes.find((n) => n.id === selectedId) ?? null,
@@ -28,20 +26,23 @@ export default function Home() {
     try {
       const res = await fetch("/api/notes", { cache: "no-store" });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Failed to load notes.");
+      if (!res.ok) {
+        const msg = data.error ?? "Failed to load notes.";
+        if (msg.includes("not configured")) setNotConfigured(true);
+        throw new Error(msg);
+      }
       setNotes(data);
       setError(null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to load notes.");
+      setError(err instanceof Error ? err.message : "Failed to load notes."); 
     } finally {
       setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    if (configured) void loadNotes();
-    else setLoading(false);
-  }, [configured, loadNotes]);
+    void loadNotes();
+  }, [loadNotes]);
 
   // Auto-select the first note once loaded
   useEffect(() => {
@@ -137,7 +138,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          {!configured && (
+          {notConfigured && (
             <button
               type="button"
               onClick={() => setShowSetup(true)}
