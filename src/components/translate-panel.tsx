@@ -17,7 +17,6 @@ interface TranslatePanelProps {
 
 interface TranslationResult {
   translation: string;
-  detectedLanguage?: string;
   model?: string;
 }
 
@@ -124,9 +123,6 @@ export function TranslatePanel({ sourceText }: TranslatePanelProps) {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <p className="text-xs font-medium text-muted-foreground">
-                {result.detectedLanguage
-                  ? `Detected: ${result.detectedLanguage.toUpperCase()} → `
-                  : ""}
                 {LANGUAGES.find((l) => l.code === target)?.name ?? target}
               </p>
               <div className="flex items-center gap-1">

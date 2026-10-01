@@ -62,15 +62,13 @@ export async function POST(request: NextRequest) {
     const completion = await openai.chat.completions.create({
       model,
       temperature: 0.3,
-      response_format: { type: "json_object" },
       messages: [
         {
           role: "system",
           content:
             "You are a professional translator. Translate the user's text into the requested target language. " +
             "Preserve the original meaning, tone, line breaks, and formatting (lists, code, markdown). " +
-            'Respond with a JSON object: {"translation": string, "detectedLanguage": string}. ' +
-            'Set "detectedLanguage" to the ISO 639-1 code of the source language you detected.',
+            "Respond with ONLY the translated text — no explanations, no quotes, no markdown, no code fences.",
         },
         {
           role: "user",
@@ -79,20 +77,10 @@ export async function POST(request: NextRequest) {
       ],
     });
 
-    const raw = completion.choices[0]?.message?.content ?? "{}";
-    let parsed: { translation?: string; detectedLanguage?: string };
-    try {
-      parsed = JSON.parse(raw);
-    } catch {
-      parsed = { translation: raw };
-    }
-
-    const translation =
-      typeof parsed.translation === "string" ? parsed.translation : raw;
+    const translation = (completion.choices[0]?.message?.content ?? "").trim();
 
     return NextResponse.json({
       translation,
-      detectedLanguage: parsed.detectedLanguage,
       model,
     });
   } catch (err) {
