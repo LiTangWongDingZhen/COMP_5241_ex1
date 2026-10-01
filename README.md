@@ -149,6 +149,8 @@ The app uses a **vibrant gradient design system** defined in `src/app/globals.cs
 ## Notes
 
 - The app is designed as a **single-user local tool**: RLS policies are permissive. For multi-user deployment, add an `owner_id` column and scope policies to `auth.uid()` (see comment in `supabase/schema.sql`).
-- Translation uses `openai/gpt-4o-mini` via OpenRouter by default; override with the `OPENROUTER_MODEL` env var (e.g. `anthropic/claude-3.5-haiku`, `google/gemini-flash-1.5`).
+- Translation uses `qwen 3.8 27b : free` via OpenRouter by default; override with the `OPENROUTER_MODEL` env var (e.g. `anthropic/claude-3.5-haiku`, `google/gemini-flash-1.5`).
 - The translate API returns **plain translated text** (no JSON wrapper) — the model is instructed to respond with only the translation.
 - Vercel Speed Insights is wired up in `src/app/layout.tsx` via `<SpeedInsights />`.
+
+- This app is developed via the use of : qwen 3.8 27b running locally
