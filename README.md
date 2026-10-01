@@ -1,5 +1,7 @@
 # Notely — AI note taking
 
+(useless fact: this app is created using qwen 3.8 27B models running locally)
+
 A note taking app with an AI translation feature, built with **Next.js 16 (App Router)**, **TypeScript**, **Tailwind CSS v4**, and **Supabase** as the database. Includes user-selectable **light / dark mode**.
 
 ## Features
