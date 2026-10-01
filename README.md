@@ -71,7 +71,7 @@ src/
     api/
       notes/route.ts         # GET list, POST create
       notes/[id]/route.ts    # GET, PUT, DELETE single note
-      translate/route.ts     # POST — OpenAI translation
+      translate/route.ts     # POST — OpenRouter translation
   components/
     notes-list.tsx           # Sidebar note list
     note-editor.tsx          # Title + content editor with save state
@@ -79,7 +79,6 @@ src/
     theme-provider.tsx       # next-themes wrapper
     theme-toggle.tsx         # Light/dark toggle button
   lib/
-    supabase.ts              # Browser Supabase client
     languages.ts             # Supported target languages
     types.ts                 # Shared types
 supabase/
