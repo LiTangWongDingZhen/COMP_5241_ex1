@@ -62,7 +62,7 @@ Browser (React)
 | `SUPABASE_PUBLISHABLE_KEY` | Server | Supabase publishable key (browser-safe) |
 | `SUPABASE_SECRET_KEY` | Server | Supabase secret key (fallback) |
 | `OPENROUTER_API_KEY` | Server | OpenRouter API key |
-| `OPENROUTER_MODEL` | Server (optional) | Override default model (`openai/gpt-4o-mini`) |
+| `OPENROUTER_MODEL` | Server (optional) | Override default model (`qwen 3.8 27b : free`) |
 
 > **Critical:** These variables are **NOT** prefixed with `NEXT_PUBLIC_`. They are only read on the server. Do NOT add the `NEXT_PUBLIC_` prefix — it would expose secrets to the browser.
 
